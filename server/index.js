@@ -8,12 +8,11 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 const { fileURLToPath } = require("url");
-const PORT = process.env.PORT || 3001;
 
 
 // CONFIGURATIONS
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = module.filename;
+const __dirname = path.dirname(module.filename);
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -27,6 +26,7 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 
 // FILE STORAGE
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "public/assets");
