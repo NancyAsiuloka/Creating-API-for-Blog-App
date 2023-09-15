@@ -26,8 +26,6 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 
 // FILE STORAGE
-
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "public/assets");
@@ -36,13 +34,7 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
-
-const upload = multer({ storage: storage });
-
-module.exports = {
-    storage: storage,
-    upload: upload
-};
+const upload = multer({ storage });
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 4000;
