@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 const { fileURLToPath } = require("url");
+const { register } = require("./controllers/auth.js");
 
 
 // CONFIGURATIONS
@@ -33,6 +34,10 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({ storage });
+
+// ROUTE WITH FILES
+app.post('/auth/register', upload.single('picture'), register);
+
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 3001;
