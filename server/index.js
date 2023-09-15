@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 const { fileURLToPath } = require("url");
+const PORT = process.env.PORT || 3001;
 
 
 // CONFIGURATIONS
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
+
 // FILE STORAGE
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -36,11 +38,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // MONGOOSE SETUP
-const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
+    console.log(`server port ${PORT}`)
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 }).catch((error) => console.log(`${error} did not connect`));
-
