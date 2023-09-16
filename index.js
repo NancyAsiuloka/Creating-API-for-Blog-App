@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 const { fileURLToPath } = require("url");
+const authRoutes = require("./routes/auth.js");
 const { register } = require("./controllers/auth.js");
 
 
@@ -37,6 +38,9 @@ const upload = multer({ storage });
 
 // ROUTE WITH FILES
 app.post('/auth/register', upload.single('picture'), register);
+
+// ROUTES
+app.use("/auth", authRoutes);
 
 
 // MONGOOSE SETUP
