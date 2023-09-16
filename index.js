@@ -43,6 +43,7 @@ app.post('/auth/register', upload.single('picture'), register);
 // ROUTES
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use('/posts', postRoutes);
 
 
 // MONGOOSE SETUP
