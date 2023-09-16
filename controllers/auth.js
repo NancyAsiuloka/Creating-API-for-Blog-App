@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User.js');
 
 // REGISTER USER
-exports.register = async (req, res) =>{
+const register = async (req, res) =>{
     try{
         const {
             firstName,
@@ -36,4 +36,31 @@ exports.register = async (req, res) =>{
     } catch (err){
         res.status(500).json({ error: err.message });
     }
+}
+
+// LOGGING IN
+const login = async (req, res) => {
+    try{
+        const { email, password } = req.body;
+        const user = await User.findOne({ email: email});
+        if(!user) return res.status(400)
+        .json({ msg: "User does not exist" });
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch) return res.status(400)
+        .json({ msg: "Invalid credentials." });
+
+        const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET);
+        delete user.password;
+        res.status(200).json({ token, user });
+
+    } catch (err){
+        res.status(500).json({ error: err.message });
+    }
+};
+
+
+module.exports = {
+    register,
+    login
 }
