@@ -63,5 +63,5 @@ mongoose.connect(process.env.MONGO_URL, {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     User.insertMany(users);
-    Posts.insertMany(posts);
+    Post.insertMany(posts);
 }).catch((error) => console.log(error));
