@@ -14,7 +14,8 @@ const postRoutes = require("./routes/posts.js");
 const { register } = require("./controllers/auth.js");
 const { createPost } = require("./controllers/posts.js");
 const { verifyToken } = require("./middleware/auth.js");
-
+const User = require('./models/User.js');
+const Post = require('./models/Post.js');
 
 // CONFIGURATIONS
 dotenv.config();
