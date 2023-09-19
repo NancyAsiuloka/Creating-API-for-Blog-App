@@ -19,7 +19,7 @@ const Post = require('./models/Post.js');
 const { users, posts } = require('./data/index.js');
 
 
-// CONFIGURATION
+// CONFIGURATIONS
 dotenv.config();
 const app = express();
 app.use(express.json());
