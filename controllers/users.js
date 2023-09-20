@@ -9,7 +9,7 @@ const getUser = async (req, res) => {
     } catch (err) {
         res.status(404).json({message: err.message});
     }
-}
+};
 
 const getUserFriends = async (req, res) => {
     try {
