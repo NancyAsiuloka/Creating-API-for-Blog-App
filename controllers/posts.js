@@ -25,7 +25,7 @@ const createPost = async (req, res) => {
     } catch (err) {
         res.status(409).json({ message: err.message });
     }
-}
+};
 
 
 // READ
