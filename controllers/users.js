@@ -67,4 +67,4 @@ module.exports = {
     getUser,
     getUserFriends,
     addRemoveFriend
-}
+};
