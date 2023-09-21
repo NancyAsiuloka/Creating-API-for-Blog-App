@@ -53,7 +53,7 @@ app.use("/user", userRoutes);
 app.use('/posts', postRoutes);
 
 
-// MONGOOSE SETUP
+// MONGOOSE SET
 const PORT = process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGO_URL, {
