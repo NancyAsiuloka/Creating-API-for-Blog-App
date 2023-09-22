@@ -2,7 +2,7 @@ const express = require('express');
 const {
     getUser,
     getUserFriends,
-    addRemoveFriend,
+    addRemoveFriend
 } = require('../controllers/users.js');
 const { verifyToken }= require('../middleware/auth.js');
 
