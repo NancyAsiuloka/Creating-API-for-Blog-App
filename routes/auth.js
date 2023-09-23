@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.post('/login', login);
 
-// exported a
+// exported a module
 module.exports = router;
