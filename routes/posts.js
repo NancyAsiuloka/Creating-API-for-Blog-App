@@ -2,7 +2,7 @@ const express = require('express');
 const {
     getFeedPosts,
     getUserPosts,
-    likePost
+    likePost,
 } = require('../controllers/posts.js');
 const { verifyToken } = require('../middleware/auth.js');
 
